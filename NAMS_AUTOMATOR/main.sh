@@ -35,9 +35,9 @@ printName () {
   dpkg -s figlet &> /dev/null
   if [[ $? -eq 0 ]]; then
     #statements
+    echo -e "    \a\e[31mW3LC0M3 TO AUT0MAT3R\e[0m\n"
     figlet "N_C_AUT)MAT#R"
   else
-    echo -e "    \a\e[31mW3LC0M3 TO AUT0MAT3R\e[0m\n"
     echo "        _____        ___    ________________ "
     echo "       /  // /      /  /   |                |"
     echo "      /  / / /     /  /    |   _____________|"
