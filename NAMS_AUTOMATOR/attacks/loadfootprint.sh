@@ -9,6 +9,7 @@ loadphoneinfo(){
     echo -e "\nloading PhoneInfoga"
     FILE=./PhoneInfoga
     if [ ! -d "$FILE" ]; then
+      echo -e "\nPhoneInfoga directory is not present in the main script directory."
       echo -e "\nplease make sure that PhoneInfoga directory is present in the main script directory."
       echo -e "Loading main file....*"
       sleep 15
@@ -45,6 +46,7 @@ loadsherlock() {
     echo -e "\nloading sherlock"
     FILE=./sherlock
     if [ ! -d "$FILE" ]; then
+      echo -e "\nsherlock is not present in the main script directory."
       echo -e "\nplease make sure that sherlock directory is present in the main script directory."
       sleep 15
       bash ./main.sh

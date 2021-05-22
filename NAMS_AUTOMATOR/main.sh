@@ -10,7 +10,7 @@ checkFiglet () {
 
   dpkg -s figlet &> /dev/null
   if [[ $? -eq 0 ]]; then
-    echo -e "\a\e\n[1;34m[+]figlet package present.."
+    echo -e "\n\a\e[1;34m[+]figlet package present.."
     sleep 1
   else
     echo -e "\n[+]figlet package is required for font.please install..."
@@ -22,7 +22,7 @@ checkingModules () {
   dpkg -s curl &> /dev/null
   if [[ $? -eq 0 ]]; then
     #statements
-    echo -e "\a\e\n[1;34m[+]curl present...\e[0;m"
+    echo -e "\n\a\e[1;34m[+]curl present...\e[0;m"
     sleep 3
   else
     echo -e "\n[+]curl package is required.please install..."
@@ -32,7 +32,7 @@ checkingModules () {
   dpkg -s wget &> /dev/null
   if [[ $? -eq 0 ]]; then
     #statements
-    echo -e "\a\e\n[1;34m[+]wget present...\e[0;m"
+    echo -e "\n\a\e[1;34m[+]wget present...\e[0;m"
     sleep 3
   else
     echo -e "\n[+]wget package is required.please install..."
