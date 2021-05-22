@@ -24,7 +24,7 @@ loadwireless () {
    esac
 }
 checkWIFI () {
-  wifistat= iw dev | awk '$1=="Interface"{print $2}'
+  wifistat= $(iw dev | awk '$1=="Interface"{print $2}')
   if [[ $wifistat == "" ]];then
     xterm -e "ifconfig;echo available interfaces;sleep 5;echo wireless interface not present;sleep 10"
     echo -e "\n\a\e[1;31m[+]wifi interface not present to continue\e[0m"
