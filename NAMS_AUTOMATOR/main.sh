@@ -58,7 +58,7 @@ loadScript (){
   echo -e "\n\n\tplease select a method:\n"
   echo -e "   [1] footprinting & reconnaissance"
   echo -e "   [2] scanning attacks"
-  echo -e "   [3] payload generators"
+  echo -e "   [3] wireless attacks"
   echo -e "   [4] social engineering attacks"
   echo -e "   [5] penetration testing"
   echo -e "   [6] exit"
