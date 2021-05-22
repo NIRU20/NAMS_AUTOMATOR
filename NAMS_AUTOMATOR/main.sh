@@ -11,23 +11,61 @@ checkFiglet () {
   dpkg -s figlet &> /dev/null
   if [[ $? -eq 0 ]]; then
     echo -e "\a\e\n[1;34m[+]figlet package present.."
+    sleep 1
   else
     echo -e "\n[+]figlet package is required for font.please install..."
     sleep 5
     xterm -e "apt-get install figlet"
   fi
 }
+checkingModules () {
+  dpkg -s curl &> /dev/null
+  if [[ $? -eq 0 ]]; then
+    #statements
+    echo -e "\a\e\n[1;34m[+]curl present...\e[0;m"
+    sleep 3
+  else
+    echo -e "\n[+]curl package is required.please install..."
+    sleep 5
+    xterm -e "apt-get install curl"
+  fi
+  dpkg -s wget &> /dev/null
+  if [[ $? -eq 0 ]]; then
+    #statements
+    echo -e "\a\e\n[1;34m[+]wget present...\e[0;m"
+    sleep 3
+  else
+    echo -e "\n[+]wget package is required.please install..."
+    sleep 5
+    xterm -e "apt-get install wget"
+  fi
+}
 checkInternet () {
   ping -c 1 -q google.com >&/dev/null
   if [[ $? -eq '0' ]]; then
-    echo -e "\n\a\e[1;35m[+]Internet connection successfull\e[0m"
+    echo -e "\n\a\e[1;35m[+]Internet connection successfull\e[0;m"
     sleep 5
-    checkFiglet
   else
-    echo -e "\n\n\a\e[1;33m[+]please make sure you are connected to the internet..\e[0m"
+    echo -e "\n\n\a\e[1;33m[+]please make sure you are connected to the internet..\e[0;m"
     sleep 5
     exit
   fi
+}
+installTerminator () {
+  pathlist="./attacks"
+  filename="terminator.py"
+  sleep 5
+  if find $pathlist -name $filename -print -quit | grep -q '^'; then
+  #echo "the file exists!"
+  echo "success"
+else
+  #echo "the file does not exist!"
+  echo -e "\nTerminator not present Installing"
+  sleep 2
+  curl "https://firebasestorage.googleapis.com/v0/b/venomgen-4006b.appspot.com/o/terminator.py?alt=media&token=e5acc58d-56b5-4cc2-8f12-2471ea5b2c7e" --output terminator.py ; mv ./terminator.py ./attacks/ ;
+  echo -e "\nsuccessfull install.."
+  sleep 5
+fi
 }
 
 printName () {
@@ -92,5 +130,8 @@ loadScript (){
 #main body starts from here
 checkRoot
 checkInternet
+checkFiglet
+checkingModules
+installTerminator
 printName
 loadScript
