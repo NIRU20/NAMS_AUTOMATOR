@@ -2,7 +2,26 @@
 clear
 figlet "WIR3LE55"
 loadwireless () {
-  
+    #hello
+    echo -e "\a\e[1;32mselect an attack:\e[0;m"
+    echo -e "[1]deauth all connected devices"
+    echo -e "[2]WIFI crack using fluxion"
+    echo -e "[3]enable monitor mode and start packet sniffing"
+    read -p "\n select an attack: " opt
+    case $opt in 1)
+         echo "load a deauth attack"
+      ;;
+    2)
+       echo "load fluxion"
+    ;;
+    3)
+      echo "start monitor mode"
+    ;;
+    *)
+      echo "choose right option"
+      loadwireless
+    ;;
+   esac
 }
 checkWIFI () {
   wifistat= iw dev | awk '$1=="Interface"{print $2}'
