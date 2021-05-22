@@ -74,7 +74,10 @@ printName () {
   if [[ $? -eq 0 ]]; then
     #statements
     echo -e "    \a\e[31mW3LC0M3 TO AUT0MAT3R\e[0m\n"
-    figlet "N_C_AUT)MAT#R"
+    echo -e "\a\e[32m"
+    figlet "NASM"
+    figlet "AUT)MAT#R"
+    echo -e "\e[0m"
   else
     echo "        _____        ___    ________________ "
     echo "       /  // /      /  /   |                |"
@@ -86,7 +89,7 @@ printName () {
     echo " /  /      / //  /         |                |"
     echo "/__/       /____/          |________________|"
   fi
-  echo -e "\n\n\e[1;34m[+]developed by cRaZySuDo..\e[0m"
+  echo -e "\n\n\e[1;34m[+]developed by cRaZySuDo & Team..\e[0m"
   sleep 3
   echo -e "\n\n\a\e[31m[+]script loading please wait....*\e[0m"
   sleep 3
