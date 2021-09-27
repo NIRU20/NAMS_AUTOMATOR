@@ -23,7 +23,7 @@ checkingModules () {
   if [[ $? -eq 0 ]]; then
     #statements
     echo -e "\n\a\e[1;34m[+]curl present...\e[0;m"
-    sleep 3
+    sleep 1
   else
     echo -e "\n[+]curl package is required.please install..."
     sleep 5
@@ -33,7 +33,7 @@ checkingModules () {
   if [[ $? -eq 0 ]]; then
     #statements
     echo -e "\n\a\e[1;34m[+]wget present...\e[0;m"
-    sleep 3
+    sleep 1
   else
     echo -e "\n[+]wget package is required.please install..."
     sleep 5
@@ -44,7 +44,7 @@ checkInternet () {
   ping -c 1 -q google.com >&/dev/null
   if [[ $? -eq '0' ]]; then
     echo -e "\n\a\e[1;35m[+]Internet connection successfull\e[0;m"
-    sleep 5
+    sleep 2
   else
     echo -e "\n\n\a\e[1;33m[+]please make sure you are connected to the internet..\e[0;m"
     sleep 5
@@ -54,7 +54,7 @@ checkInternet () {
 installTerminator () {
   pathlist="./attacks"
   filename="terminator.py"
-  sleep 5
+  sleep 2
   if find $pathlist -name $filename -print -quit | grep -q '^'; then
   #echo "the file exists!"
   echo "success"
@@ -91,42 +91,43 @@ printName () {
   fi
   echo -e "\n\n\e[1;34m[+]developed by cRaZySuDo & Team..\e[0m"
   sleep 3
+  echo -e "\n\n\a\e[32m[+]especially developed for kali linux & parrot security operating systems....*\e[0m"
+  sleep 1
   echo -e "\n\n\a\e[31m[+]script loading please wait....*\e[0m"
   sleep 3
 }
 
 loadScript (){
   echo -e "\n\n\tplease select a method:\n"
-  echo -e "   [1] footprinting & reconnaissance"
-  echo -e "   [2] scanning attacks"
-  echo -e "   [3] wireless attacks"
-  echo -e "   [4] social engineering attacks"
-  echo -e "   [5] penetration testing"
-  echo -e "   [6] exit"
+  echo -e "   [1] footprinting & Scanning Tools"
+  echo -e "   [2] wireless attacks"
+  echo -e "   [3] social engineering attacks"
+  echo -e "   [4] penetration testing"
+  echo -e "   [5] exit"
   read -p "choose your attack:" opt
   if [[ $opt -eq "1" ]]; then
     ./attacks/loadfootprint.sh
   fi
 
   if [[ $opt -eq "2" ]];then
-    ./attacks/loadscanning.sh
-  fi
-
-  if [[ $opt -eq "3" ]];then
     ./attacks/loadpayloadgen.sh
   fi
 
-  if [[ $opt -eq "4" ]];then
+  if [[ $opt -eq "3" ]];then
     ./attacks/loadset.sh
   fi
 
-  if [[ $opt -eq "5" ]];then
-     ./attacks/loadpentest.sh
-   fi
+  if [[ $opt -eq "4" ]];then
+    ./attacks/loadpentest.sh
+  fi
 
-  if [[ $opt -eq "6" ]]; then
+  if [[ $opt -eq "5" ]];then
     echo -e "\n\n \a\e[31mthank you for choosing our automater\e[0m"
     exit 1
+   fi
+
+  if [[ $opt > "5" ]]; then
+        exit 1
   fi
 }
 

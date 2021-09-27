@@ -1,5 +1,19 @@
 #!/bin/bash
 clear
+loadNmap () {
+  clear
+  echo -e "\n"
+  dpkg -s nmap &> /dev/null
+  if [[ $? -ne 0 ]]; then
+    #statements
+    echo -e "\n\a\e[1;34m[+]please install Nmap...\e[0;m"
+    sleep 5
+    ./attacks/loadfootprint.sh
+  else
+    ./attacks/nmapscans.sh
+  fi
+
+}
 loadphoneinfo(){
   clear
   echo -e "\n"
@@ -105,8 +119,7 @@ echo -e "[7]main menu"
 echo -e "[8]exit"
 read -p "enter your choice: " opt
 if [[ $opt -eq 1 ]]; then
-  echo -e "\nupdating "
-  loadmain
+  loadNmap
 fi
 if [[ $opt -eq 2 ]]; then
   echo -e "\nupdating "
@@ -133,7 +146,7 @@ if [[ $opt -eq 7 ]]; then
   bash ./main.sh
 fi
 if [[ $opt -eq 8 ]]; then
-  exit
+  exit 
 fi
 }
 
